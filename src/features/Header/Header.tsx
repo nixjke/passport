@@ -1,11 +1,15 @@
-import { Container as MuiContainer, styled, Typography, Box } from '@mui/material'
+import { Container as MuiContainer, styled, Typography, Box, Button } from '@mui/material'
+import { borderRadius } from '@mui/system'
+import Image from 'next/image'
 import React from 'react'
 import { colors } from 'theme'
+
+import headerImg from './img.png'
 
 const ContainerWrapper = styled(MuiContainer)(() => ({
   backgroundColor: colors.blue,
   height: '588px',
-  paddingTop: 38
+  paddingTop: 38,
 }))
 
 const NavLink = styled(Typography)(() => ({
@@ -57,11 +61,62 @@ export const Header: React.FC = () => {
         >
           Логотип
         </Typography>
-        <Box sx={{ display: 'flex', gap: '100px' }}>
-          <NavLink variant="body1">О сервисе</NavLink>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '680px', gap: '4px' }}>
+          <NavLink>О сервисе</NavLink>
           <NavLink>Документы</NavLink>
           <NavLink>Контакты</NavLink>
           <NavLink>Блог</NavLink>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          margin: '80px 140px 0 140px',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <Box>
+          <Typography
+            sx={{
+              color: '#fff',
+              width: 'max(660px)',
+            }}
+            variant="h1"
+          >
+            Поможем вам сделать качественное фото для документов
+          </Typography>
+          <Typography
+            sx={{
+              color: '#fff',
+              fontSize: '28px',
+            }}
+          >
+            с учетом размерных требований
+          </Typography>
+          <Button
+            sx={{
+              color: '#000',
+              borderRadius: '58px',
+              padding: '21px 40px',
+              backgroundColor: colors.yellow,
+              mt: '30px',
+              '&:hover': {
+                backgroundColor: '#fff',
+              },
+            }}
+          >
+            <Typography sx={{ fontSize: '18px', fontWeight: 700 }}>Загрузить фото</Typography>
+          </Button>
+        </Box>
+        <Box>
+          <Box
+            sx={{
+              width: '578px',
+              marginTop: '-66px',
+            }}
+          >
+            <Image placeholder="blur" src={headerImg} alt="" />
+          </Box>
         </Box>
       </Box>
     </ContainerWrapper>
