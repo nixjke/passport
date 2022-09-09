@@ -53,7 +53,23 @@ export const Header: React.FC = () => {
   }
 
   const uploadHandler = (e: any) => {
-    console.log(e.target.files[0])
+    const file = e.target.files[0]
+
+    const formData = new FormData()
+    formData.append(file.name, file)
+
+    console.log(formData)
+
+    const options: any = {
+      method: 'POST',
+      headers: { 'Content-Type': 'multipart/form-data; boundary=---011000010111000001101001' },
+      body: formData,
+    }
+
+    fetch('http://5.53.125.246:8007/process', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err))
   }
 
   return (
